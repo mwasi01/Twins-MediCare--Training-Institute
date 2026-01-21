@@ -1,409 +1,1648 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>TWINS MEDCARE TRAINING INSTITUTE</title>
-        <link rel="icon" href="images/Twins png.png" type="image/png">
-        <link rel="stylesheet" href="style.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
-    </head>
-    <body>
-        <!-- Header with Updated Navigation -->
-        <section class="header">
-            <nav>
-                <a href="index.html" class="logo-container">
-                    <img src="images/Twins png.png" class="logo">
-                    <span class="logo-text">TWINS MEDCARE</span>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TWINS MEDCARE TRAINING INSTITUTE</title>
+    <link rel="icon" href="images/Twins png.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* ===== BASE STYLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        section {
+            padding: 80px 20px;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            padding: 12px 35px;
+            background: transparent;
+            border: 2px solid white;
+            border-radius: 25px;
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .hero-btn:hover {
+            background: white;
+            color: #333;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .red-btn {
+            background: #f44336;
+            border-color: #f44336;
+            color: white;
+            padding: 10px 25px;
+            font-size: 13px;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 15px;
+        }
+
+        .red-btn:hover {
+            background: #d32f2f;
+            border-color: #d32f2f;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* ===== HEADER SECTION ===== */
+        .header {
+            min-height: 100vh;
+            width: 100%;
+            background: linear-gradient(rgba(4,9,30,0.7), rgba(4,9,30,0.7)), 
+                        url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&auto=format&fit=crop&w=2067&q=80');
+            background-position: center;
+            background-size: cover;
+            position: relative;
+            color: white;
+            padding-top: 20px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2% 6%;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(4,9,30,0.9);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo {
+            width: 50px;
+            height: auto;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .nav-links {
+            flex: 1;
+            text-align: right;
+        }
+
+        .nav-links ul {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-links ul li a {
+            color: white;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 8px 0;
+            position: relative;
+        }
+
+        .nav-links ul li a:hover {
+            color: #4CAF50;
+        }
+
+        .nav-links ul li a.active {
+            color: #4CAF50;
+            font-weight: 600;
+        }
+
+        .nav-links ul li a.active::after {
+            content: '';
+            width: 100%;
+            height: 2px;
+            background: #4CAF50;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+
+        /* Auth Buttons */
+        .auth-buttons {
+            display: flex;
+            gap: 10px;
+            margin-left: 20px;
+        }
+
+        .btn-login, .btn-register {
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 13px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            white-space: nowrap;
+        }
+
+        .btn-login {
+            background: #4CAF50;
+            color: white;
+            border: 2px solid #4CAF50;
+        }
+
+        .btn-login.staff {
+            background: #2196F3;
+            border-color: #2196F3;
+        }
+
+        .btn-login:hover {
+            background: transparent;
+            color: #4CAF50;
+        }
+
+        .btn-login.staff:hover {
+            color: #2196F3;
+        }
+
+        .btn-register {
+            background: #f44336;
+            color: white;
+            border: 2px solid #f44336;
+        }
+
+        .btn-register:hover {
+            background: transparent;
+            color: #f44336;
+        }
+
+        /* Mobile Menu */
+        .fa-bars, .fa-times {
+            display: none;
+            color: white;
+            font-size: 22px;
+            cursor: pointer;
+        }
+
+        .mobile-auth {
+            display: none;
+        }
+
+        /* Hero Content */
+        .text-box {
+            width: 90%;
+            max-width: 1200px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .text-box h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .text-box p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .primary-btn {
+            background: #4CAF50;
+            border-color: #4CAF50;
+        }
+
+        .primary-btn:hover {
+            background: #45a049;
+            border-color: #45a049;
+        }
+
+        .secondary-btn {
+            background: transparent;
+            border-color: white;
+        }
+
+        .secondary-btn:hover {
+            background: white;
+            color: #333;
+        }
+
+        /* Stats */
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            min-width: 150px;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-item h3 {
+            font-size: 2.5rem;
+            margin-bottom: 5px;
+            color: #4CAF50;
+        }
+
+        .stat-item p {
+            font-size: 14px;
+            opacity: 0.9;
+            margin: 0;
+        }
+
+        /* Scroll Indicator */
+        .scroll-indicator {
+            margin-top: 40px;
+        }
+
+        .scroll-indicator h3 {
+            font-size: 1rem;
+            margin-bottom: 10px;
+            opacity: 0.8;
+            font-weight: 400;
+        }
+
+        .arrows {
+            width: 30px;
+            height: 60px;
+            margin: 0 auto;
+        }
+
+        .arrows path {
+            stroke: white;
+            fill: transparent;
+            stroke-width: 2px;
+            animation: arrow 2s infinite;
+        }
+
+        .arrows path.a1 {
+            animation-delay: -1s;
+        }
+
+        .arrows path.a2 {
+            animation-delay: -0.5s;
+        }
+
+        .arrows path.a3 {
+            animation-delay: 0s;
+        }
+
+        @keyframes arrow {
+            0% {opacity: 0;}
+            40% {opacity: 1;}
+            80% {opacity: 0;}
+            100% {opacity: 0;}
+        }
+
+        /* ===== PORTALS PREVIEW ===== */
+        .portals-preview {
+            background: #f8f9fa;
+            text-align: center;
+        }
+
+        .portals-preview h1 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .portals-preview .subtitle {
+            color: #666;
+            margin-bottom: 50px;
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .portal-col {
+            flex: 1;
+            min-width: 300px;
+            max-width: 350px;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portal-col:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .portal-icon {
+            width: 80px;
+            height: 80px;
+            background: #e8f5e9;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 35px;
+            color: #4CAF50;
+            transition: all 0.3s ease;
+        }
+
+        .portal-col:hover .portal-icon {
+            background: #4CAF50;
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .portal-col:nth-child(2) .portal-icon {
+            background: #e3f2fd;
+            color: #2196F3;
+        }
+
+        .portal-col:nth-child(2):hover .portal-icon {
+            background: #2196F3;
+        }
+
+        .portal-col:nth-child(3) .portal-icon {
+            background: #fff3e0;
+            color: #FF9800;
+        }
+
+        .portal-col:nth-child(3):hover .portal-icon {
+            background: #FF9800;
+        }
+
+        .portal-col h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .portal-col p {
+            color: #666;
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .portal-features {
+            text-align: left;
+            margin: 20px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .portal-features span {
+            display: block;
+            margin: 10px 0;
+            color: #555;
+            font-size: 0.9rem;
+        }
+
+        .portal-features i {
+            color: #4CAF50;
+            margin-right: 8px;
+            font-size: 0.9rem;
+        }
+
+        .portal-col:nth-child(2) .portal-features i {
+            color: #2196F3;
+        }
+
+        .portal-col:nth-child(3) .portal-features i {
+            color: #FF9800;
+        }
+
+        .portal-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #4CAF50;
+            color: white;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portal-btn i {
+            margin-left: 5px;
+            transition: transform 0.3s ease;
+        }
+
+        .portal-btn:hover {
+            background: #45a049;
+            padding-right: 35px;
+            padding-left: 25px;
+        }
+
+        .portal-btn:hover i {
+            transform: translateX(5px);
+        }
+
+        .staff-btn {
+            background: #2196F3;
+        }
+
+        .staff-btn:hover {
+            background: #1976D2;
+        }
+
+        .blog-btn {
+            background: #FF9800;
+        }
+
+        .blog-btn:hover {
+            background: #F57C00;
+        }
+
+        /* ===== COURSES SECTION ===== */
+        .course {
+            background: white;
+            text-align: center;
+        }
+
+        .course h1 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .course > p {
+            color: #666;
+            margin-bottom: 50px;
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .course-col {
+            flex: 1;
+            min-width: 300px;
+            max-width: 350px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: left;
+            position: relative;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .course-col:hover {
+            transform: translateY(-10px);
+            border-color: #4CAF50;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .course-badge {
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: #FF9800;
+            color: white;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(255,152,0,0.3);
+        }
+
+        .course-col h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .course-col p {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .course-details {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+            padding: 15px 0;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+            color: #666;
+            font-size: 0.85rem;
+        }
+
+        .course-details span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .course-details i {
+            color: #4CAF50;
+        }
+
+        .view-all-courses {
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .view-all-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #4CAF50;
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 12px 25px;
+            border: 2px solid #4CAF50;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .view-all-btn:hover {
+            background: #4CAF50;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(76,175,80,0.3);
+        }
+
+        /* ===== BLOG PREVIEW ===== */
+        .blog-preview {
+            background: #f8f9fa;
+        }
+
+        .blog-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .blog-header h1 {
+            font-size: 2.5rem;
+            color: #333;
+        }
+
+        .blog-header > p {
+            color: #666;
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .view-all-blog {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #4CAF50;
+            font-weight: 600;
+            padding: 10px 20px;
+            border: 2px solid #4CAF50;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .view-all-blog:hover {
+            background: #4CAF50;
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .blog-col {
+            flex: 1;
+            min-width: 300px;
+            max-width: 350px;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .blog-col:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .blog-image {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .blog-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .blog-col:hover .blog-image img {
+            transform: scale(1.1);
+        }
+
+        .blog-category {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: #4CAF50;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 2;
+        }
+
+        .blog-content {
+            padding: 25px;
+        }
+
+        .blog-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #333;
+            line-height: 1.4;
+        }
+
+        .blog-meta {
+            color: #888;
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .blog-meta i {
+            margin-right: 5px;
+        }
+
+        .blog-content > p {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .read-more {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #4CAF50;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .read-more:hover {
+            gap: 12px;
+            color: #45a049;
+        }
+
+        /* ===== FEATURES SECTION ===== */
+        .features {
+            background: white;
+            text-align: center;
+        }
+
+        .features h1 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .features > p {
+            color: #666;
+            margin-bottom: 50px;
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .feature-col {
+            flex: 1;
+            min-width: 250px;
+            max-width: 280px;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-col:hover {
+            background: #4CAF50;
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(76,175,80,0.2);
+        }
+
+        .feature-col:hover i,
+        .feature-col:hover h3,
+        .feature-col:hover p {
+            color: white;
+        }
+
+        .feature-col i {
+            font-size: 50px;
+            color: #4CAF50;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-col h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+
+        .feature-col p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            transition: all 0.3s ease;
+        }
+
+        /* ===== TESTIMONIALS ===== */
+        .testimonials {
+            background: #f8f9fa;
+            text-align: center;
+        }
+
+        .testimonials h1 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .testimonials > p {
+            color: #666;
+            margin-bottom: 50px;
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .testimonials-col {
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: left;
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .testimonials-col:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .testimonials-col img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #4CAF50;
+        }
+
+        .testimonials-col > div {
+            flex: 1;
+        }
+
+        .rating {
+            color: #FFD700;
+            margin-bottom: 10px;
+        }
+
+        .testimonials-col p {
+            color: #666;
+            margin-bottom: 15px;
+            font-style: italic;
+            line-height: 1.6;
+        }
+
+        .testimonials-col h3 {
+            color: #333;
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+
+        .student-course {
+            color: #4CAF50;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* ===== CALL TO ACTION ===== */
+        .cta {
+            background: linear-gradient(rgba(4,9,30,0.8), rgba(4,9,30,0.8)), 
+                        url('https://images.unsplash.com/photo-1516549655669-df6654e435f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            color: white;
+            padding: 100px 20px;
+        }
+
+        .cta h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .cta p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: #222;
+            color: #ddd;
+            padding: 80px 20px 30px;
+        }
+
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto 50px;
+        }
+
+        .footer-col {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo img {
+            width: 50px;
+            height: auto;
+        }
+
+        .footer-logo h3 {
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .footer-col p {
+            color: #aaa;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            background: #4CAF50;
+            transform: translateY(-5px);
+        }
+
+        .footer-col h4 {
+            color: white;
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: #4CAF50;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 15px;
+        }
+
+        .footer-col ul li a {
+            color: #aaa;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-col ul li a:hover {
+            color: #4CAF50;
+            transform: translateX(10px);
+        }
+
+        .footer-col ul li a i {
+            font-size: 0.9rem;
+        }
+
+        .contact-info p {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            color: #aaa;
+        }
+
+        .contact-info i {
+            color: #4CAF50;
+            width: 20px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        .footer-bottom p {
+            margin-bottom: 10px;
+        }
+
+        .footer-bottom i {
+            color: #f44336;
+            margin: 0 5px;
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 1100px) {
+            .text-box h1 {
+                font-size: 2.8rem;
+            }
+            
+            .auth-buttons {
+                flex-direction: column;
+                gap: 8px;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .nav-links ul {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .auth-buttons {
+                flex-direction: row;
+                margin-left: 0;
+                margin-top: 20px;
+            }
+            
+            .text-box h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -300px;
+                height: 100vh;
+                width: 300px;
+                background: rgba(4,9,30,0.95);
+                padding: 50px 30px;
+                transition: right 0.5s ease;
+                z-index: 1001;
+            }
+            
+            .nav-links ul {
+                flex-direction: column;
+                gap: 25px;
+            }
+            
+            .auth-buttons {
+                flex-direction: column;
+                margin-top: 30px;
+            }
+            
+            .fa-bars, .fa-times {
+                display: block;
+            }
+            
+            .mobile-auth {
+                display: flex;
+                align-items: center;
+                gap: 20px;
+            }
+            
+            .btn-register-mobile {
+                background: #f44336;
+                color: white;
+                padding: 8px 15px;
+                border-radius: 5px;
+                display: inline-flex;
+                align-items: center;
+                gap: 5px;
+            }
+            
+            .text-box h1 {
+                font-size: 2.2rem;
+            }
+            
+            .stat-item {
+                min-width: 120px;
+                padding: 15px;
+            }
+            
+            .stat-item h3 {
+                font-size: 2rem;
+            }
+            
+            .blog-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .testimonials-col {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            
+            .cta h1 {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .text-box h1 {
+                font-size: 1.8rem;
+            }
+            
+            .text-box p {
+                font-size: 1rem;
+            }
+            
+            .stats {
+                gap: 15px;
+            }
+            
+            .stat-item {
+                min-width: 100px;
+                padding: 10px;
+            }
+            
+            .stat-item h3 {
+                font-size: 1.5rem;
+            }
+            
+            section {
+                padding: 60px 15px;
+            }
+            
+            .cta h1 {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* Animation for stats */
+        @keyframes countUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .stat-item h3 {
+            animation: countUp 1s ease forwards;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <section class="header">
+        <nav>
+            <a href="index.html" class="logo-container">
+                <img src="images/Twins png.png" alt="Twins MedCare Logo" class="logo">
+                <span class="logo-text">TWINS MEDCARE</span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <i class="fas fa-times" onclick="hideMenu()"></i>
+                <ul>
+                    <li><a href="index.html" class="active">HOME</a></li>
+                    <li><a href="about.html">ABOUT</a></li>
+                    <li><a href="course.html">COURSES</a></li>
+                    <li><a href="exams.html">EXAMS</a></li>
+                    <li><a href="blog.html">BLOG</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                    <div class="auth-buttons">
+                        <li><a href="student-login.html" class="btn-login"><i class="fas fa-user-graduate"></i> STUDENT LOGIN</a></li>
+                        <li><a href="staff-login.html" class="btn-login staff"><i class="fas fa-chalkboard-teacher"></i> STAFF LOGIN</a></li>
+                        <li><a href="register.html" class="btn-register"><i class="fas fa-user-plus"></i> REGISTER</a></li>
+                    </div>
+                </ul>
+            </div>
+            <div class="mobile-auth">
+                <a href="register.html" class="btn-register-mobile"><i class="fas fa-user-plus"></i> REGISTER</a>
+                <i class="fas fa-bars" onclick="showMenu()"></i>
+            </div>
+        </nav>
+        
+        <div class="text-box">
+            <h1>Twins MedCare Training Institute</h1>
+            <p>
+                Your pathway to excellence in healthcare education. Certified institution for all your nursing training needs with modern digital learning platforms.
+            </p>
+            <div class="hero-buttons">
+                <a href="register.html" class="hero-btn primary-btn"><i class="fas fa-user-plus"></i> JOIN NOW</a>
+                <a href="course.html" class="hero-btn secondary-btn"><i class="fas fa-book-open"></i> EXPLORE COURSES</a>
+            </div>
+            <div class="stats">
+                <div class="stat-item">
+                    <h3>500+</h3>
+                    <p>Students Enrolled</p>
+                </div>
+                <div class="stat-item">
+                    <h3>98%</h3>
+                    <p>Pass Rate</p>
+                </div>
+                <div class="stat-item">
+                    <h3>50+</h3>
+                    <p>Expert Lecturers</p>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <h3>Scroll for more information</h3>
+                <svg class="arrows">
+                    <path stroke-linecap="round" class="a1" d="M0 0 L15 15 L30 0"></path>
+                    <path stroke-linecap="round" class="a2" d="M0 10 L15 25 L30 10"></path>
+                    <path stroke-linecap="round" class="a3" d="M0 20 L15 35 L30 20"></path>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portals Preview Section -->
+    <section class="portals-preview">
+        <h1>Access Our Digital Platform</h1>
+        <p class="subtitle">Experience seamless learning and management with our integrated portals</p>
+
+        <div class="row">
+            <div class="portal-col">
+                <div class="portal-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h3>Student Portal</h3>
+                <p>Access your courses, submit assignments, check grades, track progress, and interact with lecturers.</p>
+                <div class="portal-features">
+                    <span><i class="fas fa-check-circle"></i> Assignment Submission</span>
+                    <span><i class="fas fa-check-circle"></i> Grade Tracking</span>
+                    <span><i class="fas fa-check-circle"></i> Course Materials</span>
+                </div>
+                <a href="student-login.html" class="portal-btn student-btn">Student Login <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="portal-col">
+                <div class="portal-icon">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                </div>
+                <h3>Staff Portal</h3>
+                <p>Upload assignments, manage courses, grade submissions, post announcements, and track student progress.</p>
+                <div class="portal-features">
+                    <span><i class="fas fa-check-circle"></i> Upload Materials</span>
+                    <span><i class="fas fa-check-circle"></i> Grade Management</span>
+                    <span><i class="fas fa-check-circle"></i> Student Analytics</span>
+                </div>
+                <a href="staff-login.html" class="portal-btn staff-btn">Staff Login <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="portal-col">
+                <div class="portal-icon">
+                    <i class="fas fa-blog"></i>
+                </div>
+                <h3>Blog & Resources</h3>
+                <p>Read latest healthcare articles, access learning materials, research papers, and stay updated with industry news.</p>
+                <div class="portal-features">
+                    <span><i class="fas fa-check-circle"></i> Latest Articles</span>
+                    <span><i class="fas fa-check-circle"></i> Study Resources</span>
+                    <span><i class="fas fa-check-circle"></i> Industry Updates</span>
+                </div>
+                <a href="blog.html" class="portal-btn blog-btn">Visit Blog <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section class="course">
+        <h1>Our Courses</h1>
+        <p>All Training Programs are affiliated to Twins MedCare Training Institute</p>
+
+        <div class="row">
+            <div class="course-col">
+                <div class="course-badge">Most Popular</div>
+                <h3>Nursing Assistant Training</h3>
+                <p>Comprehensive program combining classroom instruction with hands-on clinical experience, preparing students for immediate employment in healthcare settings.</p>
+                <div class="course-details">
+                    <span><i class="fas fa-clock"></i> 6 Months</span>
+                    <span><i class="fas fa-certificate"></i> Certification</span>
+                    <span><i class="fas fa-users"></i> 40 Students</span>
+                </div>
+                <a href="course.html#nursing" class="hero-btn red-btn">EXPLORE COURSE</a>
+            </div>
+            
+            <div class="course-col">
+                <div class="course-badge">New</div>
+                <h3>Patient Care Technician</h3>
+                <p>Advanced training in patient care, phlebotomy, EKG monitoring, and basic nursing procedures for enhanced healthcare service delivery.</p>
+                <div class="course-details">
+                    <span><i class="fas fa-clock"></i> 8 Months</span>
+                    <span><i class="fas fa-certificate"></i> Advanced Certification</span>
+                    <span><i class="fas fa-users"></i> 30 Students</span>
+                </div>
+                <a href="course.html#patient-care" class="hero-btn red-btn">EXPLORE COURSE</a>
+            </div>
+            
+            <div class="course-col">
+                <h3>Home Health Aide</h3>
+                <p>Specialized training for providing care to patients in home settings, including elderly care, disability support, and basic medical assistance.</p>
+                <div class="course-details">
+                    <span><i class="fas fa-clock"></i> 4 Months</span>
+                    <span><i class="fas fa-certificate"></i> Basic Certification</span>
+                    <span><i class="fas fa-users"></i> 25 Students</span>
+                </div>
+                <a href="course.html#home-health" class="hero-btn red-btn">EXPLORE COURSE</a>
+            </div>
+        </div>
+        
+        <div class="view-all-courses">
+            <a href="course.html" class="view-all-btn">View All Courses <i class="fas fa-chevron-right"></i></a>
+        </div>
+    </section>
+
+    <!-- Blog Preview Section -->
+    <section class="blog-preview">
+        <div class="blog-header">
+            <h1>Latest from Our Blog</h1>
+            <p>Stay updated with healthcare trends, tips, and institutional news</p>
+            <a href="blog.html" class="view-all-blog">View All Posts <i class="fas fa-arrow-right"></i></a>
+        </div>
+        
+        <div class="row">
+            <div class="blog-col">
+                <div class="blog-image">
+                    <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Healthcare Training">
+                    <div class="blog-category">Training Tips</div>
+                </div>
+                <div class="blog-content">
+                    <h3>5 Essential Skills for Modern Nursing Assistants</h3>
+                    <p class="blog-meta"><i class="far fa-calendar"></i> Oct 15, 2024 | <i class="far fa-user"></i> Dr. Sarah Johnson</p>
+                    <p>Discover the key skills that every nursing assistant needs in today's healthcare environment for better patient care and career growth.</p>
+                    <a href="blog-post.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="blog-col">
+                <div class="blog-image">
+                    <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Medical Technology">
+                    <div class="blog-category">Technology</div>
+                </div>
+                <div class="blog-content">
+                    <h3>How Technology is Revolutionizing Healthcare Education</h3>
+                    <p class="blog-meta"><i class="far fa-calendar"></i> Oct 10, 2024 | <i class="far fa-user"></i> Prof. Michael Chen</p>
+                    <p>Explore the latest technological advancements transforming how healthcare professionals are trained and educated worldwide.</p>
+                    <a href="blog-post.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="blog-col">
+                <div class="blog-image">
+                    <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Student Success">
+                    <div class="blog-category">Student Stories</div>
+                </div>
+                <div class="blog-content">
+                    <h3>From Student to Professional: Jane's Journey</h3>
+                    <p class="blog-meta"><i class="far fa-calendar"></i> Oct 5, 2024 | <i class="far fa-user"></i> Jane Mwangi</p>
+                    <p>Follow the inspiring journey of one of our graduates who now works at a leading hospital making a difference every day.</p>
+                    <a href="blog-post.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <h1>Why Choose Twins MedCare?</h1>
+        <p>We provide comprehensive education with modern facilities</p>
+        
+        <div class="row">
+            <div class="feature-col">
+                <i class="fas fa-laptop-house"></i>
+                <h3>Online Learning</h3>
+                <p>Access course materials and submit assignments through our digital platform anytime, anywhere.</p>
+            </div>
+            
+            <div class="feature-col">
+                <i class="fas fa-hands-helping"></i>
+                <h3>Hands-on Training</h3>
+                <p>Practical clinical experience in well-equipped laboratories and simulation centers.</p>
+            </div>
+            
+            <div class="feature-col">
+                <i class="fas fa-briefcase"></i>
+                <h3>Career Support</h3>
+                <p>Job placement assistance and career counseling for all our graduates.</p>
+            </div>
+            
+            <div class="feature-col">
+                <i class="fas fa-user-friends"></i>
+                <h3>Expert Faculty</h3>
+                <p>Learn from experienced healthcare professionals and industry experts.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <h1>What Our Students Say</h1>
+        <p>Hear from our community of learners and professionals</p>
+        <div class="row">
+            <div class="testimonials-col">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Student">
+                <div>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"The student portal made learning so convenient. I could access materials and submit assignments even during clinical rotations. The interface is user-friendly!"</p>
+                    <h3>John Omondi</h3>
+                    <p class="student-course">Nursing Assistant Student</p>
+                </div>
+            </div>
+            <div class="testimonials-col">
+                <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Student">
+                <div>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p>"As a lecturer, the staff portal saves me hours each week. Uploading materials and grading assignments is now seamless. Highly recommended for educators!"</p>
+                    <h3>Dr. Sarah Johnson</h3>
+                    <p class="student-course">Senior Lecturer</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta">
+        <h1>Ready to Start Your Healthcare Journey?</h1>
+        <p>Join hundreds of successful healthcare professionals who started at Twins MedCare</p>
+        <div class="cta-buttons">
+            <a href="register.html" class="hero-btn primary-btn"><i class="fas fa-user-plus"></i> APPLY NOW</a>
+            <a href="contact.html" class="hero-btn secondary-btn"><i class="fas fa-phone-alt"></i> CONTACT ADMISSIONS</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <section class="footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <a href="index.html" class="footer-logo">
+                    <img src="images/Twins png.png" alt="Twins MedCare Logo">
+                    <h3>TWINS MEDCARE</h3>
                 </a>
-                <div class="nav-links" id="navLinks">
-                    <i class="fa fa-times" onclick="hideMenu()"></i>
-                    <ul>
-                        <li><a href="index.html" class="active">HOME</a></li>
-                        <li><a href="about.html">ABOUT</a></li>
-                        <li><a href="course.html">COURSES</a></li>
-                        <li><a href="exams.html">EXAMS</a></li>
-                        <li><a href="blog.html">BLOG</a></li>
-                        <li><a href="contact.html">CONTACT</a></li>
-                        <div class="auth-buttons">
-                            <li><a href="student-login.html" class="btn-login"><i class="fas fa-user-graduate"></i> STUDENT LOGIN</a></li>
-                            <li><a href="staff-login.html" class="btn-login staff"><i class="fas fa-chalkboard-teacher"></i> STAFF LOGIN</a></li>
-                            <li><a href="register.html" class="btn-register"><i class="fas fa-user-plus"></i> REGISTER</a></li>
-                        </div>
-                    </ul>
-                </div>
-                <div class="mobile-auth">
-                    <a href="register.html" class="btn-register-mobile"><i class="fas fa-user-plus"></i></a>
-                    <i class="fa fa-bars" onclick="showMenu()"></i>
-                </div>
-            </nav>
-            
-            <div class="text-box">
-                <h1>Twins MedCare Training Institute</h1>
-                <p>
-                    Your pathway to excellence in healthcare education. Certified institution for all your nursing training needs with modern digital learning platforms.
-                </p>
-                <div class="hero-buttons">
-                    <a href="register.html" class="hero-btn primary-btn"><i class="fas fa-user-plus"></i> JOIN NOW</a>
-                    <a href="course.html" class="hero-btn secondary-btn"><i class="fas fa-book-open"></i> EXPLORE COURSES</a>
-                </div>
-                <div class="stats">
-                    <div class="stat-item">
-                        <h3>500+</h3>
-                        <p>Students Enrolled</p>
-                    </div>
-                    <div class="stat-item">
-                        <h3>98%</h3>
-                        <p>Pass Rate</p>
-                    </div>
-                    <div class="stat-item">
-                        <h3>50+</h3>
-                        <p>Expert Lecturers</p>
-                    </div>
-                </div>
-                <div class="scroll-indicator">
-                    <h3>Scroll for more information</h3>
-                    <svg class="arrows">
-                        <path stroke-linecap="round" class="a1" d="M0 0 L15 15 L30 0"></path>
-                        <path stroke-linecap="round" class="a2" d="M0 10 L15 25 L30 10"></path>
-                        <path stroke-linecap="round" class="a3" d="M0 20 L15 35 L30 20"></path>
-                    </svg>
-                </div>
-            </div>
-        </section>
-
-        <!-- Portals Preview Section -->
-        <section class="portals-preview">
-            <h1>Access Our Digital Platform</h1>
-            <p class="subtitle">Experience seamless learning and management with our integrated portals</p>
-
-            <div class="row">
-                <div class="portal-col">
-                    <div class="portal-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <h3>Student Portal</h3>
-                    <p>Access your courses, submit assignments, check grades, track progress, and interact with lecturers.</p>
-                    <div class="portal-features">
-                        <span><i class="fas fa-check-circle"></i> Assignment Submission</span>
-                        <span><i class="fas fa-check-circle"></i> Grade Tracking</span>
-                        <span><i class="fas fa-check-circle"></i> Course Materials</span>
-                    </div>
-                    <a href="student-login.html" class="portal-btn student-btn">Student Login <i class="fas fa-arrow-right"></i></a>
-                </div>
-                
-                <div class="portal-col">
-                    <div class="portal-icon">
-                        <i class="fas fa-chalkboard-teacher"></i>
-                    </div>
-                    <h3>Staff Portal</h3>
-                    <p>Upload assignments, manage courses, grade submissions, post announcements, and track student progress.</p>
-                    <div class="portal-features">
-                        <span><i class="fas fa-check-circle"></i> Upload Materials</span>
-                        <span><i class="fas fa-check-circle"></i> Grade Management</span>
-                        <span><i class="fas fa-check-circle"></i> Student Analytics</span>
-                    </div>
-                    <a href="staff-login.html" class="portal-btn staff-btn">Staff Login <i class="fas fa-arrow-right"></i></a>
-                </div>
-                
-                <div class="portal-col">
-                    <div class="portal-icon">
-                        <i class="fas fa-blog"></i>
-                    </div>
-                    <h3>Blog & Resources</h3>
-                    <p>Read latest healthcare articles, access learning materials, research papers, and stay updated with industry news.</p>
-                    <div class="portal-features">
-                        <span><i class="fas fa-check-circle"></i> Latest Articles</span>
-                        <span><i class="fas fa-check-circle"></i> Study Resources</span>
-                        <span><i class="fas fa-check-circle"></i> Industry Updates</span>
-                    </div>
-                    <a href="blog.html" class="portal-btn blog-btn">Visit Blog <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Courses Section -->
-        <section class="course">
-            <h1>Our Courses</h1>
-            <p>All Training Programs are affiliated to Twins MedCare Training Institute</p>
-
-            <div class="row">
-                <div class="course-col">
-                    <div class="course-badge">Most Popular</div>
-                    <h3>Nursing Assistant Training</h3>
-                    <p>Comprehensive program combining classroom instruction with hands-on clinical experience, preparing students for immediate employment in healthcare settings.</p>
-                    <div class="course-details">
-                        <span><i class="fas fa-clock"></i> 6 Months</span>
-                        <span><i class="fas fa-certificate"></i> Certification</span>
-                        <span><i class="fas fa-users"></i> 40 Students</span>
-                    </div>
-                    <a href="course.html#nursing" class="hero-btn red-btn">EXPLORE COURSE</a>
-                </div>
-                
-                <div class="course-col">
-                    <div class="course-badge">New</div>
-                    <h3>Patient Care Technician</h3>
-                    <p>Advanced training in patient care, phlebotomy, EKG monitoring, and basic nursing procedures for enhanced healthcare service delivery.</p>
-                    <div class="course-details">
-                        <span><i class="fas fa-clock"></i> 8 Months</span>
-                        <span><i class="fas fa-certificate"></i> Advanced Certification</span>
-                        <span><i class="fas fa-users"></i> 30 Students</span>
-                    </div>
-                    <a href="course.html#patient-care" class="hero-btn red-btn">EXPLORE COURSE</a>
-                </div>
-                
-                <div class="course-col">
-                    <h3>Home Health Aide</h3>
-                    <p>Specialized training for providing care to patients in home settings, including elderly care, disability support, and basic medical assistance.</p>
-                    <div class="course-details">
-                        <span><i class="fas fa-clock"></i> 4 Months</span>
-                        <span><i class="fas fa-certificate"></i> Basic Certification</span>
-                        <span><i class="fas fa-users"></i> 25 Students</span>
-                    </div>
-                    <a href="course.html#home-health" class="hero-btn red-btn">EXPLORE COURSE</a>
+                <p>One of the best Nursing Assistant Training colleges in Kenya. Certified institution for all your nursing training needs with modern digital platforms.</p>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
                 </div>
             </div>
             
-            <div class="view-all-courses">
-                <a href="course.html" class="view-all-btn">View All Courses <i class="fas fa-chevron-right"></i></a>
-            </div>
-        </section>
-
-        <!-- Blog Preview Section -->
-        <section class="blog-preview">
-            <div class="blog-header">
-                <h1>Latest from Our Blog</h1>
-                <p>Stay updated with healthcare trends, tips, and institutional news</p>
-                <a href="blog.html" class="view-all-blog">View All Posts <i class="fas fa-arrow-right"></i></a>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                    <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                    <li><a href="course.html"><i class="fas fa-chevron-right"></i> Courses</a></li>
+                    <li><a href="blog.html"><i class="fas fa-chevron-right"></i> Blog</a></li>
+                    <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                </ul>
             </div>
             
-            <div class="row">
-                <div class="blog-col">
-                    <div class="blog-image">
-                        <img src="images/blog1.jpg" alt="Healthcare Training">
-                        <div class="blog-category">Training Tips</div>
-                    </div>
-                    <div class="blog-content">
-                        <h3>5 Essential Skills for Modern Nursing Assistants</h3>
-                        <p class="blog-meta"><i class="far fa-calendar"></i> Oct 15, 2024 | <i class="far fa-user"></i> Dr. Sarah Johnson</p>
-                        <p>Discover the key skills that every nursing assistant needs in today's healthcare environment...</p>
-                        <a href="blog-post.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                
-                <div class="blog-col">
-                    <div class="blog-image">
-                        <img src="images/blog2.jpg" alt="Medical Technology">
-                        <div class="blog-category">Technology</div>
-                    </div>
-                    <div class="blog-content">
-                        <h3>How Technology is Revolutionizing Healthcare Education</h3>
-                        <p class="blog-meta"><i class="far fa-calendar"></i> Oct 10, 2024 | <i class="far fa-user"></i> Prof. Michael Chen</p>
-                        <p>Explore the latest technological advancements transforming how healthcare professionals are trained...</p>
-                        <a href="blog-post.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                
-                <div class="blog-col">
-                    <div class="blog-image">
-                        <img src="images/blog3.jpg" alt="Student Success">
-                        <div class="blog-category">Student Stories</div>
-                    </div>
-                    <div class="blog-content">
-                        <h3>From Student to Professional: Jane's Journey</h3>
-                        <p class="blog-meta"><i class="far fa-calendar"></i> Oct 5, 2024 | <i class="far fa-user"></i> Jane Mwangi</p>
-                        <p>Follow the inspiring journey of one of our graduates who now works at a leading hospital...</p>
-                        <a href="blog-post.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Features Section -->
-        <section class="features">
-            <h1>Why Choose Twins MedCare?</h1>
-            <p>We provide comprehensive education with modern facilities</p>
-            
-            <div class="row">
-                <div class="feature-col">
-                    <i class="fas fa-laptop-house"></i>
-                    <h3>Online Learning</h3>
-                    <p>Access course materials and submit assignments through our digital platform anytime, anywhere.</p>
-                </div>
-                
-                <div class="feature-col">
-                    <i class="fas fa-hands-helping"></i>
-                    <h3>Hands-on Training</h3>
-                    <p>Practical clinical experience in well-equipped laboratories and simulation centers.</p>
-                </div>
-                
-                <div class="feature-col">
-                    <i class="fas fa-briefcase"></i>
-                    <h3>Career Support</h3>
-                    <p>Job placement assistance and career counseling for all our graduates.</p>
-                </div>
-                
-                <div class="feature-col">
-                    <i class="fas fa-user-friends"></i>
-                    <h3>Expert Faculty</h3>
-                    <p>Learn from experienced healthcare professionals and industry experts.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Testimonials -->
-        <section class="testimonials">
-            <h1>What Our Students Say</h1>
-            <p>Hear from our community of learners and professionals</p>
-            <div class="row">
-                <div class="testimonials-col">
-                    <img src="images/student1.jpg" alt="Student">
-                    <div>
-                        <div class="rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                        </div>
-                        <p>"The student portal made learning so convenient. I could access materials and submit assignments even during clinical rotations."</p>
-                        <h3>John Omondi</h3>
-                        <p class="student-course">Nursing Assistant Student</p>
-                    </div>
-                </div>
-                <div class="testimonials-col">
-                    <img src="images/student2.jpg" alt="Student">
-                    <div>
-                        <div class="rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-half-o"></i>
-                        </div>
-                        <p>"As a lecturer, the staff portal saves me hours each week. Uploading materials and grading assignments is now seamless."</p>
-                        <h3>Dr. Sarah Johnson</h3>
-                        <p class="student-course">Senior Lecturer</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Call to Action -->
-        <section class="cta">
-            <h1>Ready to Start Your Healthcare Journey?</h1>
-            <p>Join hundreds of successful healthcare professionals who started at Twins MedCare</p>
-            <div class="cta-buttons">
-                <a href="register.html" class="hero-btn primary-btn"><i class="fas fa-user-plus"></i> APPLY NOW</a>
-                <a href="contact.html" class="hero-btn secondary-btn"><i class="fas fa-phone-alt"></i> CONTACT ADMISSIONS</a>
-            </div>
-        </section>
-
-        <!-- Footer -->
-        <section class="footer">
-            <div class="footer-container">
-                <div class="footer-col">
-                    <a href="index.html" class="footer-logo">
-                        <img src="images/Twins png.png" alt="Logo">
-                        <h3>TWINS MEDCARE</h3>
-                    </a>
-                    <p>One of the best Nursing Assistant Training colleges in Kenya. Certified institution for all your nursing training needs.</p>
-                    <div class="footer-social">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-                
-                <div class="footer-col">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
-                        <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
-                        <li><a href="course.html"><i class="fas fa-chevron-right"></i> Courses</a></li>
-                        <li><a href="blog.html"><i class="fas fa-chevron-right"></i> Blog</a></li>
-                        <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h4>Portals</h4>
-                    <ul>
-                        <li><a href="student-login.html"><i class="fas fa-graduation-cap"></i> Student Portal</a></li>
-                        <li><a href="staff-login.html"><i class="fas fa-chalkboard-teacher"></i> Staff Portal</a></li>
-                        <li><a href="exams.html"><i class="fas fa-file-alt"></i> Exams Portal</a></li>
-                        <li><a href="blog.html"><i class="fas fa-blog"></i> Blog Portal</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h4>Contact Info</h4>
-                    <div class="contact-info">
-                        <p><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</p>
-                        <p><i class="fas fa-phone"></i> +254 700 000 000</p>
-                        <p><i class="fas fa-envelope"></i> info@twinsmedcare.ac.ke</p>
-                        <p><i class="fas fa-clock"></i> Mon-Fri: 8:00 AM - 5:00 PM</p>
-                    </div>
-                </div>
+            <div class="footer-col">
+                <h4>Portals</h4>
+                <ul>
+                    <li><a href="student-login.html"><i class="fas fa-graduation-cap"></i> Student Portal</a></li>
+                    <li><a href="staff-login.html"><i class="fas fa-chalkboard-teacher"></i> Staff Portal</a></li>
+                    <li><a href="exams.html"><i class="fas fa-file-alt"></i> Exams Portal</a></li>
+                    <li><a href="blog.html"><i class="fas fa-blog"></i> Blog Portal</a></li>
+                </ul>
             </div>
             
-            <div class="footer-bottom">
-                <p>&copy; 2024 Twins MedCare Training Institute. All rights reserved.</p>
-                <p>Made with <i class="fas fa-heart"></i> by Charles Duya Technologies</p>
+            <div class="footer-col">
+                <h4>Contact Info</h4>
+                <div class="contact-info">
+                    <p><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</p>
+                    <p><i class="fas fa-phone"></i> +254 700 000 000</p>
+                    <p><i class="fas fa-envelope"></i> info@twinsmedcare.ac.ke</p>
+                    <p><i class="fas fa-clock"></i> Mon-Fri: 8:00 AM - 5:00 PM</p>
+                </div>
             </div>
-        </section>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024 Twins MedCare Training Institute. All rights reserved.</p>
+            <p>Made with <i class="fas fa-heart"></i> by Charles Duya Technologies</p>
+        </div>
+    </section>
 
-        <!-- JavaScript -->
-        <script>
-            var navLinks = document.getElementById("navLinks");
-            
-            function showMenu() {
-                navLinks.style.right = "0";
-                document.body.style.overflow = 'hidden';
-            }
-            
-            function hideMenu() {
-                navLinks.style.right = "-300px";
-                document.body.style.overflow = 'auto';
-            }
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        var navLinks = document.getElementById("navLinks");
+        
+        function showMenu() {
+            navLinks.style.right = "0";
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function hideMenu() {
+            navLinks.style.right = "-300px";
+            document.body.style.overflow = 'auto';
+        }
 
-            // Close menu when clicking outside on mobile
-            document.addEventListener('click', function(event) {
-                if (window.innerWidth <= 700) {
-                    if (!event.target.closest('.nav-links') && !event.target.closest('.fa-bars')) {
-                        hideMenu();
-                    }
+        // Close menu when clicking outside on mobile
+        document.addEventListener('click', function(event) {
+            if (window.innerWidth <= 768) {
+                if (!event.target.closest('.nav-links') && !event.target.closest('.fa-bars') && !event.target.closest('.mobile-auth')) {
+                    hideMenu();
                 }
-            });
+            }
+        });
 
-            // Update stats animation
-            document.addEventListener('DOMContentLoaded', function() {
-                const statItems = document.querySelectorAll('.stat-item h3');
+        // Animate stats counting
+        document.addEventListener('DOMContentLoaded', function() {
+            const statItems = document.querySelectorAll('.stat-item h3');
+            
+            statItems.forEach(stat => {
+                const target = parseInt(stat.innerText);
+                let current = 0;
+                const increment = target / 50;
                 
-                statItems.forEach(stat => {
-                    const target = parseInt(stat.innerText);
-                    let current = 0;
-                    const increment = target / 50;
-                    
-                    const updateCount = () => {
-                        if (current < target) {
-                            current += increment;
-                            stat.innerText = Math.floor(current) + '+';
-                            setTimeout(updateCount, 20);
-                        } else {
-                            stat.innerText = target + '+';
-                        }
-                    };
-                    
-                    updateCount();
-                });
+                const updateCount = () => {
+                    if (current < target) {
+                        current += increment;
+                        stat.innerText = Math.floor(current) + '+';
+                        setTimeout(updateCount, 20);
+                    } else {
+                        stat.innerText = target + '+';
+                    }
+                };
+                
+                updateCount();
             });
-        </script>
-    </body>
+        });
+
+        // Sticky Navigation
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(4,9,30,0.95)';
+                nav.style.padding = '15px 6%';
+                nav.style.boxShadow = '0 5px 15px rgba(0,0,0,0.1)';
+            } else {
+                nav.style.background = 'rgba(4,9,30,0.9)';
+                nav.style.padding = '2% 6%';
+                nav.style.boxShadow = 'none';
+            }
+        });
+    </script>
+</body>
 </html>
