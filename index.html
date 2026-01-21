@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
+        <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>TWINS MEDCARE TRAINING INSTITUTE</title>
         <link rel="icon" href="images/Twins png.png" type="image/png">
@@ -8,215 +9,401 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     </head>
     <body>
+        <!-- Header with Updated Navigation -->
         <section class="header">
             <nav>
-                <a href="index.html"><img src="images/Twins png.png" class="logo"></a>
+                <a href="index.html" class="logo-container">
+                    <img src="images/Twins png.png" class="logo">
+                    <span class="logo-text">TWINS MEDCARE</span>
+                </a>
                 <div class="nav-links" id="navLinks">
                     <i class="fa fa-times" onclick="hideMenu()"></i>
-                   <ul>
-    <li><a href="index.html">HOME</a></li>
-    <li><a href="about.html">ABOUT</a></li>
-    <li><a href="course.html">COURSES</a></li>
-    <li><a href="exams.html">EXAMS</a></li>
-    <li><a href="blog.html">BLOG</a></li>
-    <li><a href="contact.html">CONTACT</a></li>
-</ul>
-
+                    <ul>
+                        <li><a href="index.html" class="active">HOME</a></li>
+                        <li><a href="about.html">ABOUT</a></li>
+                        <li><a href="course.html">COURSES</a></li>
+                        <li><a href="exams.html">EXAMS</a></li>
+                        <li><a href="blog.html">BLOG</a></li>
+                        <li><a href="contact.html">CONTACT</a></li>
+                        <div class="auth-buttons">
+                            <li><a href="student-login.html" class="btn-login"><i class="fas fa-user-graduate"></i> STUDENT LOGIN</a></li>
+                            <li><a href="staff-login.html" class="btn-login staff"><i class="fas fa-chalkboard-teacher"></i> STAFF LOGIN</a></li>
+                            <li><a href="register.html" class="btn-register"><i class="fas fa-user-plus"></i> REGISTER</a></li>
+                        </div>
+                    </ul>
                 </div>
-                <i class="fa fa-bars" onclick="showMenu()"></i>
+                <div class="mobile-auth">
+                    <a href="register.html" class="btn-register-mobile"><i class="fas fa-user-plus"></i></a>
+                    <i class="fa fa-bars" onclick="showMenu()"></i>
+                </div>
             </nav>
+            
             <div class="text-box">
                 <h1>Twins MedCare Training Institute</h1>
                 <p>
-                    Twins MedCare is one of the best Nursing Assitant Training colleges in Kenya<br> Certified Institution for all your Nursing Training needs.
+                    Your pathway to excellence in healthcare education. Certified institution for all your nursing training needs with modern digital learning platforms.
                 </p>
-                <a href="contact.html" class="hero-btn">Visit us today.</a>
-                <h3>Scroll for more information</h3>
+                <div class="hero-buttons">
+                    <a href="register.html" class="hero-btn primary-btn"><i class="fas fa-user-plus"></i> JOIN NOW</a>
+                    <a href="course.html" class="hero-btn secondary-btn"><i class="fas fa-book-open"></i> EXPLORE COURSES</a>
+                </div>
+                <div class="stats">
+                    <div class="stat-item">
+                        <h3>500+</h3>
+                        <p>Students Enrolled</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>98%</h3>
+                        <p>Pass Rate</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>50+</h3>
+                        <p>Expert Lecturers</p>
+                    </div>
+                </div>
+                <div class="scroll-indicator">
+                    <h3>Scroll for more information</h3>
+                    <svg class="arrows">
+                        <path stroke-linecap="round" class="a1" d="M0 0 L15 15 L30 0"></path>
+                        <path stroke-linecap="round" class="a2" d="M0 10 L15 25 L30 10"></path>
+                        <path stroke-linecap="round" class="a3" d="M0 20 L15 35 L30 20"></path>
+                    </svg>
+                </div>
             </div>
-            <svg class="arrows">
-                <path stroke-linecap="round" class="a1" d="M0 0 L15 15 L30 0"></path>
-                <path stroke-linecap="round" class="a2" d="M0 10 L15 25 L30 10"></path>
-                <path stroke-linecap="round" class="a3" d="M0 20 L15 35 L30 20"></path>
-            </svg>
         </section>
 
-<!-- ------- COURSE ------- -->
+        <!-- Portals Preview Section -->
+        <section class="portals-preview">
+            <h1>Access Our Digital Platform</h1>
+            <p class="subtitle">Experience seamless learning and management with our integrated portals</p>
 
-<section class="course">
-    <h1>Our Courses</h1>
-    <p>All Training Programs are affiliated to 
-        <br>Twins MedCare Training Institute</p>
-
-    <div class="row">
-        <div class="course-col">
-            <h3>Nursing Assistant Training</h3>
-            <p>Our Nursing Assistant Training Program is designed to provide students with the essential skills and knowledge needed for a rewarding career in healthcare. This comprehensive program combines classroom instruction with hands-on clinical experience, preparing students for immediate employment in various healthcare settings.</p>
-            <a href="ugcourses.html" class="hero-btn red-btn">EXPLORE</a>
-        </div>
-        <div class="course-col">
-            <h3>Nursing Assistant Training</h3>
-            <p>Our Nursing Assistant Training Program is designed to provide students with the essential skills and knowledge needed for a rewarding career in healthcare. This comprehensive program combines classroom instruction with hands-on clinical experience, preparing students for immediate employment in various healthcare settings.</p>
-            <a href="http://www.rknec.edu/Admissions/AdmissionMTech.aspx#" class="hero-btn red-btn">EXPLORE</a>
-        </div>
-    </div>
-    <div class="row">
-        <div class="course-col">
-            <h3>Nursing Assistant Training</h3>
-            <p>Our Nursing Assistant Training Program is designed to provide students with the essential skills and knowledge needed for a rewarding career in healthcare. This comprehensive program combines classroom instruction with hands-on clinical experience, preparing students for immediate employment in various healthcare settings.</p>
-            <a href="http://www.rknec.edu/R%20and%20D/PhD-Programme.aspx" class="hero-btn red-btn">EXPLORE</a>
-        </div>        
-        <div class="course-col">
-            <h3>Management Technology</h3>
-            <p>This is a full time course offered by the Department of Management Technology with avision of expansion and mobilization of facilities for offering good quality management education and research in the country.
-                To make sure a holistic management education and to assist the graduates develop into modern leaders of the future, the Institute provides possibilities outdoor the lecture rooms as well.</p>
-            <a href="http://www.rknec.edu/Admissions/AdmissionMBA.aspx" class="hero-btn red-btn">EXPLORE</a>
-        </div>
-    </div>
-</section>
-
-
-<!-- ------- CAMPUS ------- -->
-
-<section class="campus">
-    <h1>Our Campus</h1>
-    <p></p>We are soon getting an institution and we'll be posting the location here, so keep an eye.
-    <div class="row">
-        <div class="campus-col">
-            <img src="images/Twins jpeg.jpg">
-            <div class="layer">
-                <h3>Administration</h3>
+            <div class="row">
+                <div class="portal-col">
+                    <div class="portal-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Student Portal</h3>
+                    <p>Access your courses, submit assignments, check grades, track progress, and interact with lecturers.</p>
+                    <div class="portal-features">
+                        <span><i class="fas fa-check-circle"></i> Assignment Submission</span>
+                        <span><i class="fas fa-check-circle"></i> Grade Tracking</span>
+                        <span><i class="fas fa-check-circle"></i> Course Materials</span>
+                    </div>
+                    <a href="student-login.html" class="portal-btn student-btn">Student Login <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="portal-col">
+                    <div class="portal-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <h3>Staff Portal</h3>
+                    <p>Upload assignments, manage courses, grade submissions, post announcements, and track student progress.</p>
+                    <div class="portal-features">
+                        <span><i class="fas fa-check-circle"></i> Upload Materials</span>
+                        <span><i class="fas fa-check-circle"></i> Grade Management</span>
+                        <span><i class="fas fa-check-circle"></i> Student Analytics</span>
+                    </div>
+                    <a href="staff-login.html" class="portal-btn staff-btn">Staff Login <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="portal-col">
+                    <div class="portal-icon">
+                        <i class="fas fa-blog"></i>
+                    </div>
+                    <h3>Blog & Resources</h3>
+                    <p>Read latest healthcare articles, access learning materials, research papers, and stay updated with industry news.</p>
+                    <div class="portal-features">
+                        <span><i class="fas fa-check-circle"></i> Latest Articles</span>
+                        <span><i class="fas fa-check-circle"></i> Study Resources</span>
+                        <span><i class="fas fa-check-circle"></i> Industry Updates</span>
+                    </div>
+                    <a href="blog.html" class="portal-btn blog-btn">Visit Blog <i class="fas fa-arrow-right"></i></a>
+                </div>
             </div>
-        </div>
-        <div class="campus-col">
-            <img src="images/Twins jpeg.jpg">
-            <div class="layer">
-                <h3>Library</h3>
+        </section>
+
+        <!-- Courses Section -->
+        <section class="course">
+            <h1>Our Courses</h1>
+            <p>All Training Programs are affiliated to Twins MedCare Training Institute</p>
+
+            <div class="row">
+                <div class="course-col">
+                    <div class="course-badge">Most Popular</div>
+                    <h3>Nursing Assistant Training</h3>
+                    <p>Comprehensive program combining classroom instruction with hands-on clinical experience, preparing students for immediate employment in healthcare settings.</p>
+                    <div class="course-details">
+                        <span><i class="fas fa-clock"></i> 6 Months</span>
+                        <span><i class="fas fa-certificate"></i> Certification</span>
+                        <span><i class="fas fa-users"></i> 40 Students</span>
+                    </div>
+                    <a href="course.html#nursing" class="hero-btn red-btn">EXPLORE COURSE</a>
+                </div>
+                
+                <div class="course-col">
+                    <div class="course-badge">New</div>
+                    <h3>Patient Care Technician</h3>
+                    <p>Advanced training in patient care, phlebotomy, EKG monitoring, and basic nursing procedures for enhanced healthcare service delivery.</p>
+                    <div class="course-details">
+                        <span><i class="fas fa-clock"></i> 8 Months</span>
+                        <span><i class="fas fa-certificate"></i> Advanced Certification</span>
+                        <span><i class="fas fa-users"></i> 30 Students</span>
+                    </div>
+                    <a href="course.html#patient-care" class="hero-btn red-btn">EXPLORE COURSE</a>
+                </div>
+                
+                <div class="course-col">
+                    <h3>Home Health Aide</h3>
+                    <p>Specialized training for providing care to patients in home settings, including elderly care, disability support, and basic medical assistance.</p>
+                    <div class="course-details">
+                        <span><i class="fas fa-clock"></i> 4 Months</span>
+                        <span><i class="fas fa-certificate"></i> Basic Certification</span>
+                        <span><i class="fas fa-users"></i> 25 Students</span>
+                    </div>
+                    <a href="course.html#home-health" class="hero-btn red-btn">EXPLORE COURSE</a>
+                </div>
             </div>
-        </div>
-        <div class="campus-col">
-            <img src="images/Twins jpeg.jpg">
-            <div class="layer">
-                <h3>Laboratories</h3>
+            
+            <div class="view-all-courses">
+                <a href="course.html" class="view-all-btn">View All Courses <i class="fas fa-chevron-right"></i></a>
             </div>
-        </div>
-    </div>
-</section>
+        </section>
 
-
-<!-- -------FACILITIES------- -->
-
-<section class="facilities">
-    <h1>Our facilities</h1>
-    <p>Nothing makes a good institution than a good fraternity and top-notch facilities</p>
-    <div class="row">
-        <div class="facilities-col">
-            <img src="images/Twins jpeg.jpg" alt="">
-            <h3>Headquaters</h3>
-            <p>Welcome to the country's head office. It was established in 
-                the year 2024. It serves as a center of operation for our operations across the country.</p>
-                <br>
-                <a class="hero-btn red-btn" href="#">EXPLORE</a>
-        </div>
-        <div class="facilities-col">
-            <img src="images/Twins jpeg.jpg" alt="">
-            <h3>Well Equipped Labs</h3>
-            <p>Well Equipped Labs. Labs are equipped with world class equipments and facilities based on the latest technology pertaining to different sectors.</p>
-            <br>
-            <a class="hero-btn red-btn" href="#">EXPLORE</a>
-        </div>
-        <div class="facilities-col">            
-            <img src="images/Twins jpeg.jpg" alt="">        
-            <h3>E-Community</h3>
-            <p>The Institute is committed to developing a comprehensive nursing assistant training program, designed to foster a sustainable healthcare ecosystem, promote innovative patient care techniques, and nurture the development of skilled healthcare professionals.</p>
-                <br>
-                <a class="hero-btn red-btn" href="http://www.rknec.edu/IncubationCell.aspx">EXPLORE</a>
+        <!-- Blog Preview Section -->
+        <section class="blog-preview">
+            <div class="blog-header">
+                <h1>Latest from Our Blog</h1>
+                <p>Stay updated with healthcare trends, tips, and institutional news</p>
+                <a href="blog.html" class="view-all-blog">View All Posts <i class="fas fa-arrow-right"></i></a>
             </div>
-    </div>
-</section>
-
-
-<!-- -------Testimonials------- -->
-
-<section class="testimonials">
-    <h1>What our students say</h1>
-    <p>Here are some of the comments from our current and former students</p>
-    <div class="row">
-        <div class="testimonials-col">
-            <img src="images/Twins jpeg.jpg" alt="">
-            <div>
-                <p>
-                    Yes, My college has necessary infrastructure and facilities. We have many fans, lights, blackboard, smart board in the classroom. We have all courses text book as well as other books in our library. Our college is always clean the food in canteen is hygienic too.
-                </p>
-                <h3>John Doe</h3>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star-o"></i>
+            
+            <div class="row">
+                <div class="blog-col">
+                    <div class="blog-image">
+                        <img src="images/blog1.jpg" alt="Healthcare Training">
+                        <div class="blog-category">Training Tips</div>
+                    </div>
+                    <div class="blog-content">
+                        <h3>5 Essential Skills for Modern Nursing Assistants</h3>
+                        <p class="blog-meta"><i class="far fa-calendar"></i> Oct 15, 2024 | <i class="far fa-user"></i> Dr. Sarah Johnson</p>
+                        <p>Discover the key skills that every nursing assistant needs in today's healthcare environment...</p>
+                        <a href="blog-post.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="blog-col">
+                    <div class="blog-image">
+                        <img src="images/blog2.jpg" alt="Medical Technology">
+                        <div class="blog-category">Technology</div>
+                    </div>
+                    <div class="blog-content">
+                        <h3>How Technology is Revolutionizing Healthcare Education</h3>
+                        <p class="blog-meta"><i class="far fa-calendar"></i> Oct 10, 2024 | <i class="far fa-user"></i> Prof. Michael Chen</p>
+                        <p>Explore the latest technological advancements transforming how healthcare professionals are trained...</p>
+                        <a href="blog-post.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="blog-col">
+                    <div class="blog-image">
+                        <img src="images/blog3.jpg" alt="Student Success">
+                        <div class="blog-category">Student Stories</div>
+                    </div>
+                    <div class="blog-content">
+                        <h3>From Student to Professional: Jane's Journey</h3>
+                        <p class="blog-meta"><i class="far fa-calendar"></i> Oct 5, 2024 | <i class="far fa-user"></i> Jane Mwangi</p>
+                        <p>Follow the inspiring journey of one of our graduates who now works at a leading hospital...</p>
+                        <a href="blog-post.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="testimonials-col">
-            <img src="images/Twins jpeg.jpg" alt="">
-            <div>
-                <p>
-                    Yes it is an amazing life in that campus but i could only enjoy 1 year as later pandemic happened. There 3 basketball grounds, one football ground. badminton area, chess room, 3 canteen, library and much more. Yes the area is totally safe and it is 5-7 min walking from the station. Yes college can handle the emergenices
-                </p>
-                <h3>Jane Doe</h3>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star-half-o"></i>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features">
+            <h1>Why Choose Twins MedCare?</h1>
+            <p>We provide comprehensive education with modern facilities</p>
+            
+            <div class="row">
+                <div class="feature-col">
+                    <i class="fas fa-laptop-house"></i>
+                    <h3>Online Learning</h3>
+                    <p>Access course materials and submit assignments through our digital platform anytime, anywhere.</p>
+                </div>
+                
+                <div class="feature-col">
+                    <i class="fas fa-hands-helping"></i>
+                    <h3>Hands-on Training</h3>
+                    <p>Practical clinical experience in well-equipped laboratories and simulation centers.</p>
+                </div>
+                
+                <div class="feature-col">
+                    <i class="fas fa-briefcase"></i>
+                    <h3>Career Support</h3>
+                    <p>Job placement assistance and career counseling for all our graduates.</p>
+                </div>
+                
+                <div class="feature-col">
+                    <i class="fas fa-user-friends"></i>
+                    <h3>Expert Faculty</h3>
+                    <p>Learn from experienced healthcare professionals and industry experts.</p>
+                </div>
             </div>
-        </div>
-    </div>
-</section>
+        </section>
 
-<!-- --------Call to Action -------  -->
+        <!-- Testimonials -->
+        <section class="testimonials">
+            <h1>What Our Students Say</h1>
+            <p>Hear from our community of learners and professionals</p>
+            <div class="row">
+                <div class="testimonials-col">
+                    <img src="images/student1.jpg" alt="Student">
+                    <div>
+                        <div class="rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <p>"The student portal made learning so convenient. I could access materials and submit assignments even during clinical rotations."</p>
+                        <h3>John Omondi</h3>
+                        <p class="student-course">Nursing Assistant Student</p>
+                    </div>
+                </div>
+                <div class="testimonials-col">
+                    <img src="images/student2.jpg" alt="Student">
+                    <div>
+                        <div class="rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star-half-o"></i>
+                        </div>
+                        <p>"As a lecturer, the staff portal saves me hours each week. Uploading materials and grading assignments is now seamless."</p>
+                        <h3>Dr. Sarah Johnson</h3>
+                        <p class="student-course">Senior Lecturer</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-<section class="cta">
-    <h1>Enroll for our courses <br>And enquire about Admissions</h1>
-    <a href="contact.html" class="hero-btn">CONTACT US</a>
-</section>
+        <!-- Call to Action -->
+        <section class="cta">
+            <h1>Ready to Start Your Healthcare Journey?</h1>
+            <p>Join hundreds of successful healthcare professionals who started at Twins MedCare</p>
+            <div class="cta-buttons">
+                <a href="register.html" class="hero-btn primary-btn"><i class="fas fa-user-plus"></i> APPLY NOW</a>
+                <a href="contact.html" class="hero-btn secondary-btn"><i class="fas fa-phone-alt"></i> CONTACT ADMISSIONS</a>
+            </div>
+        </section>
 
+        <!-- Footer -->
+        <section class="footer">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <a href="index.html" class="footer-logo">
+                        <img src="images/Twins png.png" alt="Logo">
+                        <h3>TWINS MEDCARE</h3>
+                    </a>
+                    <p>One of the best Nursing Assistant Training colleges in Kenya. Certified institution for all your nursing training needs.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                        <li><a href="course.html"><i class="fas fa-chevron-right"></i> Courses</a></li>
+                        <li><a href="blog.html"><i class="fas fa-chevron-right"></i> Blog</a></li>
+                        <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Portals</h4>
+                    <ul>
+                        <li><a href="student-login.html"><i class="fas fa-graduation-cap"></i> Student Portal</a></li>
+                        <li><a href="staff-login.html"><i class="fas fa-chalkboard-teacher"></i> Staff Portal</a></li>
+                        <li><a href="exams.html"><i class="fas fa-file-alt"></i> Exams Portal</a></li>
+                        <li><a href="blog.html"><i class="fas fa-blog"></i> Blog Portal</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Contact Info</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</p>
+                        <p><i class="fas fa-phone"></i> +254 700 000 000</p>
+                        <p><i class="fas fa-envelope"></i> info@twinsmedcare.ac.ke</p>
+                        <p><i class="fas fa-clock"></i> Mon-Fri: 8:00 AM - 5:00 PM</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Twins MedCare Training Institute. All rights reserved.</p>
+                <p>Made with <i class="fas fa-heart"></i> by Charles Duya Technologies</p>
+            </div>
+        </section>
 
-<!-- ------- Footer -------  -->
-
-<section class="footer">
-    <h4>About us</h4>
-    <p>
-        Twins MedCare is one of the best Nursing Assitant Training colleges in Kenya<br> Certified Institution for all your Nursing Training needs.
-    </p>
-    <div class="icons">
-        <a class="plain-link" href="https://twitter.com/RCOEM_Official"><i class="fa fa-twitter"></i></a>
-        <a class="plain-link" href="https://www.facebook.com/Shri-Ramdeobaba-College-of-Engineering-and-Management-Nagpur-India-301344790226543/?skip_nax_wizard=true"><i class="fa fa-facebook"></i></a>
-        <a class="plain-link" href="https://www.instagram.com/rcoem__official"><i class="fa fa-instagram"></i></a>
-        <a class="plain-link" href="https://www.youtube.com/channel/UCufL_1MVGtcmLjm2rQFBY9g"><i class="fa fa-youtube"></i></a>
-    </div>
-    <p>
-        Made By Charles Duya Technologies
-        <br>
-        Copyright @ 2024
-            <a class="plain-link icons-blue" href="#"><i class="fa fa-linkedin"></i></a>
-            <a class="plain-link icons-blue" href="#"><i class="fa fa-github"></i></a>
-            <a class="plain-link icons-blue" href="#"><i class="fa fa-instagram"></i></a>
-            <a class="plain-link icons-blue" href="#"><i class="fa fa-at"></i></a>
-    </p>
-</section>
-
-<!-- -------------JavaScript for toggle menu------------ -->
+        <!-- JavaScript -->
         <script>
             var navLinks = document.getElementById("navLinks");
-            function showMenu(){
+            
+            function showMenu() {
                 navLinks.style.right = "0";
+                document.body.style.overflow = 'hidden';
             }
-            function hideMenu(){
-                navLinks.style.right = "-200px";
+            
+            function hideMenu() {
+                navLinks.style.right = "-300px";
+                document.body.style.overflow = 'auto';
             }
-        </script>
 
+            // Close menu when clicking outside on mobile
+            document.addEventListener('click', function(event) {
+                if (window.innerWidth <= 700) {
+                    if (!event.target.closest('.nav-links') && !event.target.closest('.fa-bars')) {
+                        hideMenu();
+                    }
+                }
+            });
+
+            // Update stats animation
+            document.addEventListener('DOMContentLoaded', function() {
+                const statItems = document.querySelectorAll('.stat-item h3');
+                
+                statItems.forEach(stat => {
+                    const target = parseInt(stat.innerText);
+                    let current = 0;
+                    const increment = target / 50;
+                    
+                    const updateCount = () => {
+                        if (current < target) {
+                            current += increment;
+                            stat.innerText = Math.floor(current) + '+';
+                            setTimeout(updateCount, 20);
+                        } else {
+                            stat.innerText = target + '+';
+                        }
+                    };
+                    
+                    updateCount();
+                });
+            });
+        </script>
     </body>
 </html>
