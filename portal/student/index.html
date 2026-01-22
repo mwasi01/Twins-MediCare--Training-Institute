@@ -1,0 +1,1955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard - Twins MedCare Training Institute</title>
+    <link rel="icon" href="images/Twins png.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    
+    <style>
+        /* ===== BASE STYLES ===== */
+        :root {
+            --primary-color: #4CAF50;
+            --primary-dark: #45a049;
+            --secondary-color: #2196F3;
+            --accent-color: #FF9800;
+            --danger-color: #f44336;
+            --warning-color: #FFC107;
+            --success-color: #4CAF50;
+            --text-dark: #333;
+            --text-light: #666;
+            --text-lighter: #888;
+            --bg-light: #f8f9fa;
+            --bg-white: #ffffff;
+            --border-color: #e0e0e0;
+            --sidebar-width: 250px;
+            --header-height: 70px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* ===== LAYOUT ===== */
+        .dashboard-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* ===== SIDEBAR ===== */
+        .sidebar {
+            width: var(--sidebar-width);
+            background: linear-gradient(180deg, #1a237e 0%, #283593 100%);
+            color: white;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .sidebar-header {
+            padding: 25px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .sidebar-logo {
+            width: 40px;
+            height: auto;
+        }
+
+        .sidebar-brand {
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .sidebar-nav {
+            padding: 20px 0;
+        }
+
+        .nav-section {
+            margin-bottom: 25px;
+        }
+
+        .nav-title {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.5);
+            padding: 0 20px 10px;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            list-style: none;
+        }
+
+        .nav-item {
+            margin-bottom: 5px;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 20px;
+            color: rgba(255, 255, 255, 0.8);
+            transition: all 0.3s ease;
+            position: relative;
+            border-left: 3px solid transparent;
+        }
+
+        .nav-link:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-left-color: var(--primary-color);
+        }
+
+        .nav-link.active {
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            border-left-color: var(--primary-color);
+        }
+
+        .nav-link i {
+            font-size: 1.1rem;
+            width: 20px;
+            text-align: center;
+        }
+
+        .badge {
+            background: var(--primary-color);
+            color: white;
+            font-size: 0.7rem;
+            padding: 3px 8px;
+            border-radius: 10px;
+            margin-left: auto;
+        }
+
+        .sidebar-footer {
+            padding: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: auto;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .student-profile {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .student-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: white;
+        }
+
+        .student-info {
+            flex: 1;
+        }
+
+        .student-name {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: white;
+        }
+
+        .student-id {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        .main-content {
+            flex: 1;
+            margin-left: var(--sidebar-width);
+            transition: all 0.3s ease;
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            height: var(--header-height);
+            background: var(--bg-white);
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 30px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            cursor: pointer;
+        }
+
+        .page-title h1 {
+            font-size: 1.8rem;
+            color: var(--text-dark);
+        }
+
+        .page-title p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .header-icons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .icon-button {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            color: var(--text-light);
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .icon-button:hover {
+            color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        .notification-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--danger-color);
+            color: white;
+            font-size: 0.7rem;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .user-menu {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+        }
+
+        .user-name {
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        .dropdown-icon {
+            color: var(--text-light);
+            transition: transform 0.3s ease;
+        }
+
+        .user-menu:hover .dropdown-icon {
+            transform: rotate(180deg);
+        }
+
+        /* ===== DASHBOARD CONTENT ===== */
+        .dashboard-content {
+            padding: 30px;
+        }
+
+        /* ===== WELCOME BANNER ===== */
+        .welcome-banner {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .welcome-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transform: translate(50px, -50px);
+        }
+
+        .welcome-content h2 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .welcome-content p {
+            opacity: 0.9;
+            max-width: 600px;
+        }
+
+        .quick-stats {
+            display: flex;
+            gap: 30px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* ===== DASHBOARD GRID ===== */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        /* ===== CARDS ===== */
+        .card {
+            background: var(--bg-white);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .card-title i {
+            margin-right: 10px;
+            color: var(--primary-color);
+        }
+
+        .view-all {
+            font-size: 0.9rem;
+            color: var(--primary-color);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .view-all:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== UPCOMING ASSIGNMENTS ===== */
+        .assignments-list {
+            max-height: 300px;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+
+        .assignment-item {
+            padding: 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .assignment-item:hover {
+            border-color: var(--primary-color);
+            background: rgba(76, 175, 80, 0.05);
+        }
+
+        .assignment-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+
+        .assignment-title {
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 5px;
+        }
+
+        .assignment-course {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .assignment-due {
+            font-size: 0.9rem;
+            color: var(--danger-color);
+            font-weight: 500;
+            white-space: nowrap;
+            margin-left: 10px;
+        }
+
+        .assignment-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .btn {
+            padding: 8px 15px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-dark);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        /* ===== COURSE PROGRESS ===== */
+        .course-progress {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .course-progress:last-child {
+            border-bottom: none;
+        }
+
+        .course-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .course-name {
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .progress-percentage {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+
+        /* ===== ANNOUNCEMENTS ===== */
+        .announcements-list {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .announcement-item {
+            padding: 15px;
+            border-left: 3px solid var(--primary-color);
+            background: rgba(76, 175, 80, 0.05);
+            border-radius: 0 10px 10px 0;
+            margin-bottom: 15px;
+        }
+
+        .announcement-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .announcement-title {
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .announcement-date {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .announcement-content {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* ===== RECENT GRADES ===== */
+        .grades-list {
+            overflow-x: auto;
+        }
+
+        .grades-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .grades-table th {
+            text-align: left;
+            padding: 15px;
+            background: var(--bg-light);
+            color: var(--text-dark);
+            font-weight: 600;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .grades-table td {
+            padding: 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .grade-value {
+            font-weight: 600;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .grade-A {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .grade-B {
+            background: #e3f2fd;
+            color: #1565c0;
+        }
+
+        .grade-C {
+            background: #fff8e1;
+            color: #f57c00;
+        }
+
+        /* ===== CALENDAR ===== */
+        .calendar-container {
+            position: relative;
+        }
+
+        .calendar {
+            width: 100%;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .calendar-header {
+            background: var(--primary-color);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .calendar-body {
+            padding: 15px;
+        }
+
+        .calendar-table {
+            width: 100%;
+            text-align: center;
+        }
+
+        .calendar-table th {
+            padding: 10px;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        .calendar-table td {
+            padding: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .calendar-table td:hover {
+            background: var(--bg-light);
+            border-radius: 8px;
+        }
+
+        .calendar-table .today {
+            background: var(--primary-color);
+            color: white;
+            border-radius: 8px;
+        }
+
+        .calendar-table .event-day {
+            position: relative;
+        }
+
+        .event-dot {
+            position: absolute;
+            bottom: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 6px;
+            height: 6px;
+            background: var(--accent-color);
+            border-radius: 50%;
+        }
+
+        .calendar-events {
+            margin-top: 20px;
+        }
+
+        .calendar-event {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            background: var(--bg-light);
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .event-time {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            min-width: 80px;
+        }
+
+        .event-title {
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        /* ===== RESOURCES ===== */
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 15px;
+        }
+
+        .resource-item {
+            text-align: center;
+            padding: 15px;
+            background: var(--bg-light);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .resource-item:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-5px);
+        }
+
+        .resource-item:hover i {
+            color: white;
+        }
+
+        .resource-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .resource-name {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* ===== STATISTICS ===== */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .stat-card {
+            background: var(--bg-white);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .stat-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .stat-card h3 {
+            font-size: 2rem;
+            color: var(--text-dark);
+            margin-bottom: 5px;
+        }
+
+        .stat-card p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 1200px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .welcome-banner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
+
+            .quick-stats {
+                width: 100%;
+                justify-content: space-between;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+
+            .sidebar.active {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .header {
+                padding: 0 20px;
+            }
+
+            .dashboard-content {
+                padding: 20px;
+            }
+
+            .user-name {
+                display: none;
+            }
+
+            .dropdown-icon {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-right {
+                gap: 15px;
+            }
+
+            .header-icons {
+                gap: 15px;
+            }
+
+            .welcome-content h2 {
+                font-size: 1.5rem;
+            }
+
+            .stat-value {
+                font-size: 1.5rem;
+            }
+
+            .card {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .dashboard-content {
+                padding: 15px;
+            }
+
+            .welcome-banner {
+                padding: 20px;
+            }
+
+            .quick-stats {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .stat-item {
+                text-align: left;
+            }
+
+            .assignment-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .assignment-due {
+                margin-left: 0;
+            }
+
+            .assignment-actions {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card {
+            animation: fadeIn 0.5s ease;
+        }
+
+        /* ===== SCROLLBAR STYLING ===== */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a1a1a1;
+        }
+
+        /* ===== DROPDOWN MENU ===== */
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: var(--bg-white);
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            min-width: 200px;
+            display: none;
+            z-index: 1000;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .dropdown-menu.active {
+            display: block;
+        }
+
+        .dropdown-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px;
+            color: var(--text-dark);
+            transition: all 0.3s ease;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .dropdown-item:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-item:hover {
+            background: var(--bg-light);
+            color: var(--primary-color);
+        }
+
+        .dropdown-item i {
+            width: 20px;
+            text-align: center;
+        }
+
+        /* ===== NOTIFICATION PANEL ===== */
+        .notification-panel {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: var(--bg-white);
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            width: 350px;
+            max-height: 400px;
+            overflow-y: auto;
+            display: none;
+            z-index: 1000;
+        }
+
+        .notification-panel.active {
+            display: block;
+        }
+
+        .notification-header {
+            padding: 15px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .notification-header h4 {
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .mark-all-read {
+            font-size: 0.9rem;
+            color: var(--primary-color);
+            cursor: pointer;
+        }
+
+        .notification-list {
+            padding: 10px;
+        }
+
+        .notification-item {
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            background: var(--bg-light);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .notification-item:hover {
+            background: rgba(76, 175, 80, 0.1);
+        }
+
+        .notification-item.unread {
+            background: rgba(33, 150, 243, 0.1);
+        }
+
+        .notification-title {
+            font-weight: 500;
+            color: var(--text-dark);
+            margin-bottom: 5px;
+        }
+
+        .notification-time {
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        /* ===== EMPTY STATES ===== */
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-light);
+        }
+
+        .empty-state i {
+            font-size: 3rem;
+            color: var(--border-color);
+            margin-bottom: 20px;
+        }
+
+        .empty-state h4 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <!-- Sidebar Header -->
+            <div class="sidebar-header">
+                <img src="images/Twins png.png" alt="Logo" class="sidebar-logo">
+                <span class="sidebar-brand">TWINS MEDCARE</span>
+            </div>
+
+            <!-- Navigation -->
+            <nav class="sidebar-nav">
+                <!-- Main Navigation -->
+                <div class="nav-section">
+                    <h4 class="nav-title">Main Menu</h4>
+                    <ul class="nav-links">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link active">
+                                <i class="fas fa-home"></i>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="courses.html" class="nav-link">
+                                <i class="fas fa-book-open"></i>
+                                <span>My Courses</span>
+                                <span class="badge">4</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="assignments.html" class="nav-link">
+                                <i class="fas fa-tasks"></i>
+                                <span>Assignments</span>
+                                <span class="badge">3</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="grades.html" class="nav-link">
+                                <i class="fas fa-chart-line"></i>
+                                <span>Grades & Progress</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Resources -->
+                <div class="nav-section">
+                    <h4 class="nav-title">Resources</h4>
+                    <ul class="nav-links">
+                        <li class="nav-item">
+                            <a href="materials.html" class="nav-link">
+                                <i class="fas fa-file-alt"></i>
+                                <span>Course Materials</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="library.html" class="nav-link">
+                                <i class="fas fa-book"></i>
+                                <span>Digital Library</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="timetable.html" class="nav-link">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span>Class Timetable</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="exams.html" class="nav-link">
+                                <i class="fas fa-file-signature"></i>
+                                <span>Exams</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Communication -->
+                <div class="nav-section">
+                    <h4 class="nav-title">Communication</h4>
+                    <ul class="nav-links">
+                        <li class="nav-item">
+                            <a href="announcements.html" class="nav-link">
+                                <i class="fas fa-bullhorn"></i>
+                                <span>Announcements</span>
+                                <span class="badge">5</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="messages.html" class="nav-link">
+                                <i class="fas fa-comments"></i>
+                                <span>Messages</span>
+                                <span class="badge">2</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="discussions.html" class="nav-link">
+                                <i class="fas fa-users"></i>
+                                <span>Discussion Forums</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Account -->
+                <div class="nav-section">
+                    <h4 class="nav-title">Account</h4>
+                    <ul class="nav-links">
+                        <li class="nav-item">
+                            <a href="profile.html" class="nav-link">
+                                <i class="fas fa-user"></i>
+                                <span>My Profile</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="settings.html" class="nav-link">
+                                <i class="fas fa-cog"></i>
+                                <span>Settings</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="help.html" class="nav-link">
+                                <i class="fas fa-question-circle"></i>
+                                <span>Help & Support</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- Student Profile -->
+            <div class="sidebar-footer">
+                <div class="student-profile">
+                    <div class="student-avatar" id="studentAvatar">JD</div>
+                    <div class="student-info">
+                        <div class="student-name" id="studentName">John Doe</div>
+                        <div class="student-id" id="studentId">MEDCARE-2024-001</div>
+                    </div>
+                    <a href="logout.html" class="nav-link">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </a>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-left">
+                    <button class="menu-toggle" id="menuToggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="page-title">
+                        <h1>Student Dashboard</h1>
+                        <p>Welcome back! Here's your academic overview</p>
+                    </div>
+                </div>
+
+                <div class="header-right">
+                    <!-- Search -->
+                    <div class="header-icons">
+                        <button class="icon-button" id="searchButton">
+                            <i class="fas fa-search"></i>
+                        </button>
+
+                        <!-- Notifications -->
+                        <button class="icon-button" id="notificationButton">
+                            <i class="fas fa-bell"></i>
+                            <span class="notification-badge">3</span>
+                        </button>
+
+                        <!-- Messages -->
+                        <button class="icon-button" id="messageButton">
+                            <i class="fas fa-envelope"></i>
+                            <span class="notification-badge">2</span>
+                        </button>
+                    </div>
+
+                    <!-- User Menu -->
+                    <div class="user-menu" id="userMenu">
+                        <div class="user-avatar" id="userAvatar">JD</div>
+                        <span class="user-name" id="userName">John Doe</span>
+                        <i class="fas fa-chevron-down dropdown-icon"></i>
+                    </div>
+                </div>
+
+                <!-- Notification Panel -->
+                <div class="notification-panel" id="notificationPanel">
+                    <div class="notification-header">
+                        <h4>Notifications</h4>
+                        <span class="mark-all-read">Mark all as read</span>
+                    </div>
+                    <div class="notification-list">
+                        <div class="notification-item unread">
+                            <div class="notification-title">New Assignment Posted</div>
+                            <div class="notification-content">Nursing Fundamentals Assignment 3 is now available</div>
+                            <div class="notification-time">2 hours ago</div>
+                        </div>
+                        <div class="notification-item unread">
+                            <div class="notification-title">Grade Updated</div>
+                            <div class="notification-content">Your Patient Care mid-term grade has been posted</div>
+                            <div class="notification-time">1 day ago</div>
+                        </div>
+                        <div class="notification-item">
+                            <div class="notification-title">Lecture Rescheduled</div>
+                            <div class="notification-content">Anatomy lecture moved to Thursday 2 PM</div>
+                            <div class="notification-time">2 days ago</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- User Dropdown -->
+                <div class="dropdown-menu" id="userDropdown">
+                    <a href="profile.html" class="dropdown-item">
+                        <i class="fas fa-user"></i>
+                        <span>My Profile</span>
+                    </a>
+                    <a href="settings.html" class="dropdown-item">
+                        <i class="fas fa-cog"></i>
+                        <span>Settings</span>
+                    </a>
+                    <a href="help.html" class="dropdown-item">
+                        <i class="fas fa-question-circle"></i>
+                        <span>Help & Support</span>
+                    </a>
+                    <div class="dropdown-item" id="logoutBtn">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Logout</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <div class="dashboard-content">
+                <!-- Welcome Banner -->
+                <section class="welcome-banner">
+                    <div class="welcome-content">
+                        <h2>Welcome back, <span id="greetingName">John</span>! 👋</h2>
+                        <p>You have 3 upcoming assignments, 2 new announcements, and your overall progress is 78%</p>
+                    </div>
+                    <div class="quick-stats">
+                        <div class="stat-item">
+                            <div class="stat-value">3</div>
+                            <div class="stat-label">Pending Assignments</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">78%</div>
+                            <div class="stat-label">Overall Progress</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">4.2</div>
+                            <div class="stat-label">Current GPA</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Dashboard Grid -->
+                <div class="dashboard-grid">
+                    <!-- Upcoming Assignments -->
+                    <section class="card">
+                        <div class="card-header">
+                            <h3 class="card-title"><i class="fas fa-tasks"></i> Upcoming Assignments</h3>
+                            <a href="assignments.html" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                        <div class="assignments-list">
+                            <div class="assignment-item">
+                                <div class="assignment-header">
+                                    <div>
+                                        <div class="assignment-title">Patient Care Case Study</div>
+                                        <div class="assignment-course">Patient Care Technician</div>
+                                    </div>
+                                    <div class="assignment-due">Due: Tomorrow</div>
+                                </div>
+                                <p>Submit a detailed case study on patient assessment and care planning.</p>
+                                <div class="assignment-actions">
+                                    <button class="btn btn-primary">
+                                        <i class="fas fa-upload"></i> Submit
+                                    </button>
+                                    <button class="btn btn-outline">
+                                        <i class="fas fa-eye"></i> View Details
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="assignment-item">
+                                <div class="assignment-header">
+                                    <div>
+                                        <div class="assignment-title">Nursing Fundamentals Quiz</div>
+                                        <div class="assignment-course">Nursing Assistant Training</div>
+                                    </div>
+                                    <div class="assignment-due">Due: Oct 30</div>
+                                </div>
+                                <p>Online quiz covering chapters 5-8 of Fundamentals of Nursing.</p>
+                                <div class="assignment-actions">
+                                    <button class="btn btn-primary">
+                                        <i class="fas fa-play-circle"></i> Start Quiz
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="assignment-item">
+                                <div class="assignment-header">
+                                    <div>
+                                        <div class="assignment-title">Clinical Practice Report</div>
+                                        <div class="assignment-course">Clinical Practice</div>
+                                    </div>
+                                    <div class="assignment-due">Due: Nov 5</div>
+                                </div>
+                                <p>Write a report on your clinical practice experiences.</p>
+                                <div class="assignment-actions">
+                                    <button class="btn btn-outline">
+                                        <i class="fas fa-download"></i> Download Template
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Course Progress -->
+                    <section class="card">
+                        <div class="card-header">
+                            <h3 class="card-title"><i class="fas fa-chart-line"></i> Course Progress</h3>
+                            <a href="grades.html" class="view-all">Details <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                        <div class="progress-list">
+                            <div class="course-progress">
+                                <div class="course-header">
+                                    <div class="course-name">Nursing Assistant Training</div>
+                                    <div class="progress-percentage">85%</div>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 85%"></div>
+                                </div>
+                            </div>
+
+                            <div class="course-progress">
+                                <div class="course-header">
+                                    <div class="course-name">Patient Care Technician</div>
+                                    <div class="progress-percentage">72%</div>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 72%"></div>
+                                </div>
+                            </div>
+
+                            <div class="course-progress">
+                                <div class="course-header">
+                                    <div class="course-name">Anatomy & Physiology</div>
+                                    <div class="progress-percentage">90%</div>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 90%"></div>
+                                </div>
+                            </div>
+
+                            <div class="course-progress">
+                                <div class="course-header">
+                                    <div class="course-name">Clinical Practice</div>
+                                    <div class="progress-percentage">65%</div>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 65%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Recent Announcements -->
+                    <section class="card">
+                        <div class="card-header">
+                            <h3 class="card-title"><i class="fas fa-bullhorn"></i> Recent Announcements</h3>
+                            <a href="announcements.html" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                        <div class="announcements-list">
+                            <div class="announcement-item">
+                                <div class="announcement-header">
+                                    <div class="announcement-title">Mid-Term Exams Schedule</div>
+                                    <div class="announcement-date">Oct 24</div>
+                                </div>
+                                <div class="announcement-content">
+                                    The mid-term examination schedule has been posted. Please check the exams portal.
+                                </div>
+                            </div>
+
+                            <div class="announcement-item">
+                                <div class="announcement-header">
+                                    <div class="announcement-title">Clinical Practice Update</div>
+                                    <div class="announcement-date">Oct 23</div>
+                                </div>
+                                <div class="announcement-content">
+                                    Clinical practice sessions for next week have been rescheduled due to hospital requirements.
+                                </div>
+                            </div>
+
+                            <div class="announcement-item">
+                                <div class="announcement-header">
+                                    <div class="announcement-title">Library Access Extended</div>
+                                    <div class="announcement-date">Oct 22</div>
+                                </div>
+                                <div class="announcement-content">
+                                    Digital library access hours have been extended to 10 PM daily during exam period.
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Quick Resources -->
+                    <section class="card">
+                        <div class="card-header">
+                            <h3 class="card-title"><i class="fas fa-box"></i> Quick Resources</h3>
+                        </div>
+                        <div class="resources-grid">
+                            <div class="resource-item">
+                                <i class="fas fa-file-pdf resource-icon"></i>
+                                <div class="resource-name">Lecture Notes</div>
+                            </div>
+                            <div class="resource-item">
+                                <i class="fas fa-video resource-icon"></i>
+                                <div class="resource-name">Video Lectures</div>
+                            </div>
+                            <div class="resource-item">
+                                <i class="fas fa-book resource-icon"></i>
+                                <div class="resource-name">E-Books</div>
+                            </div>
+                            <div class="resource-item">
+                                <i class="fas fa-question-circle resource-icon"></i>
+                                <div class="resource-name">Practice Tests</div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Second Row -->
+                <div class="dashboard-grid">
+                    <!-- Recent Grades -->
+                    <section class="card">
+                        <div class="card-header">
+                            <h3 class="card-title"><i class="fas fa-award"></i> Recent Grades</h3>
+                            <a href="grades.html" class="view-all">All Grades <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                        <div class="grades-list">
+                            <table class="grades-table">
+                                <thead>
+                                    <tr>
+                                        <th>Course</th>
+                                        <th>Assignment</th>
+                                        <th>Score</th>
+                                        <th>Grade</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Nursing Assistant</td>
+                                        <td>Clinical Skills Test</td>
+                                        <td>92/100</td>
+                                        <td><span class="grade-value grade-A">A</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Patient Care</td>
+                                        <td>Case Study Analysis</td>
+                                        <td>85/100</td>
+                                        <td><span class="grade-value grade-B">B+</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Anatomy</td>
+                                        <td>Mid-Term Exam</td>
+                                        <td>78/100</td>
+                                        <td><span class="grade-value grade-C">C+</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Pharmacology</td>
+                                        <td>Drug Classification Quiz</td>
+                                        <td>95/100</td>
+                                        <td><span class="grade-value grade-A">A</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <!-- Calendar -->
+                    <section class="card">
+                        <div class="card-header">
+                            <h3 class="card-title"><i class="fas fa-calendar-alt"></i> Academic Calendar</h3>
+                            <a href="timetable.html" class="view-all">Full Calendar <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                        <div class="calendar-container">
+                            <div class="calendar">
+                                <div class="calendar-header">November 2024</div>
+                                <div class="calendar-body">
+                                    <table class="calendar-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Sun</th>
+                                                <th>Mon</th>
+                                                <th>Tue</th>
+                                                <th>Wed</th>
+                                                <th>Thu</th>
+                                                <th>Fri</th>
+                                                <th>Sat</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- Calendar rows would be generated dynamically -->
+                                            <tr>
+                                                <td>27</td>
+                                                <td>28</td>
+                                                <td>29</td>
+                                                <td>30</td>
+                                                <td>31</td>
+                                                <td>1</td>
+                                                <td>2</td>
+                                            </tr>
+                                            <tr>
+                                                <td>3</td>
+                                                <td>4</td>
+                                                <td>5</td>
+                                                <td class="event-day">6<span class="event-dot"></span></td>
+                                                <td>7</td>
+                                                <td class="today">8</td>
+                                                <td>9</td>
+                                            </tr>
+                                            <tr>
+                                                <td>10</td>
+                                                <td class="event-day">11<span class="event-dot"></span></td>
+                                                <td>12</td>
+                                                <td>13</td>
+                                                <td>14</td>
+                                                <td>15</td>
+                                                <td>16</td>
+                                            </tr>
+                                            <tr>
+                                                <td>17</td>
+                                                <td>18</td>
+                                                <td>19</td>
+                                                <td>20</td>
+                                                <td>21</td>
+                                                <td>22</td>
+                                                <td>23</td>
+                                            </tr>
+                                            <tr>
+                                                <td>24</td>
+                                                <td>25</td>
+                                                <td>26</td>
+                                                <td>27</td>
+                                                <td>28</td>
+                                                <td>29</td>
+                                                <td>30</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="calendar-events">
+                                <div class="calendar-event">
+                                    <div class="event-time">Nov 6, 10 AM</div>
+                                    <div class="event-title">Nursing Fundamentals Exam</div>
+                                </div>
+                                <div class="calendar-event">
+                                    <div class="event-time">Nov 11, 2 PM</div>
+                                    <div class="event-title">Clinical Practice Session</div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Statistics Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-book-reader"></i>
+                        </div>
+                        <h3>24</h3>
+                        <p>Courses Completed</p>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h3>156</h3>
+                        <p>Study Hours This Month</p>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <h3>4.2</h3>
+                        <p>Current GPA</p>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <h3>92%</h3>
+                        <p>Attendance Rate</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    
+    <script>
+        // Dashboard Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // DOM Elements
+            const menuToggle = document.getElementById('menuToggle');
+            const sidebar = document.querySelector('.sidebar');
+            const notificationButton = document.getElementById('notificationButton');
+            const notificationPanel = document.getElementById('notificationPanel');
+            const userMenu = document.getElementById('userMenu');
+            const userDropdown = document.getElementById('userDropdown');
+            const searchButton = document.getElementById('searchButton');
+            const logoutBtn = document.getElementById('logoutBtn');
+            const markAllRead = document.querySelector('.mark-all-read');
+            const notificationBadge = document.querySelector('.notification-badge');
+            const greetingName = document.getElementById('greetingName');
+
+            // Student data (in real app, this would come from backend)
+            const studentData = {
+                name: 'John Doe',
+                id: 'MEDCARE-2024-001',
+                avatarInitials: 'JD',
+                overallProgress: 78,
+                pendingAssignments: 3,
+                currentGPA: 4.2
+            };
+
+            // Initialize student data
+            function initializeStudentData() {
+                // Set greeting name (first name only)
+                const firstName = studentData.name.split(' ')[0];
+                greetingName.textContent = firstName;
+                
+                // Set avatar initials
+                const avatarElements = document.querySelectorAll('.student-avatar, .user-avatar');
+                avatarElements.forEach(el => {
+                    el.textContent = studentData.avatarInitials;
+                });
+                
+                // Set student name
+                document.getElementById('studentName').textContent = studentData.name;
+                document.getElementById('userName').textContent = studentData.name;
+                
+                // Set student ID
+                document.getElementById('studentId').textContent = studentData.id;
+                
+                // Update welcome banner stats
+                document.querySelector('.stat-value:nth-child(1)').textContent = studentData.pendingAssignments;
+                document.querySelector('.stat-value:nth-child(2)').textContent = studentData.overallProgress + '%';
+                document.querySelector('.stat-value:nth-child(3)').textContent = studentData.currentGPA;
+            }
+
+            // Mobile Menu Toggle
+            menuToggle.addEventListener('click', function() {
+                sidebar.classList.toggle('active');
+                document.body.style.overflow = sidebar.classList.contains('active') ? 'hidden' : 'auto';
+            });
+
+            // Close sidebar when clicking outside on mobile
+            document.addEventListener('click', function(event) {
+                if (window.innerWidth <= 992) {
+                    if (!sidebar.contains(event.target) && !menuToggle.contains(event.target)) {
+                        sidebar.classList.remove('active');
+                        document.body.style.overflow = 'auto';
+                    }
+                }
+            });
+
+            // Notification Panel Toggle
+            notificationButton.addEventListener('click', function(e) {
+                e.stopPropagation();
+                notificationPanel.classList.toggle('active');
+                userDropdown.classList.remove('active');
+            });
+
+            // User Menu Toggle
+            userMenu.addEventListener('click', function(e) {
+                e.stopPropagation();
+                userDropdown.classList.toggle('active');
+                notificationPanel.classList.remove('active');
+            });
+
+            // Search Button
+            searchButton.addEventListener('click', function() {
+                const searchQuery = prompt('What would you like to search for?');
+                if (searchQuery) {
+                    alert(`Searching for: ${searchQuery}\n\nIn a real application, this would show search results.`);
+                }
+            });
+
+            // Logout
+            logoutBtn.addEventListener('click', function() {
+                if (confirm('Are you sure you want to logout?')) {
+                    // In real app, this would call logout API
+                    alert('Logging out... Redirecting to login page.');
+                    // Redirect to login page
+                    window.location.href = 'login.html';
+                }
+            });
+
+            // Mark all notifications as read
+            markAllRead.addEventListener('click', function() {
+                const unreadNotifications = document.querySelectorAll('.notification-item.unread');
+                unreadNotifications.forEach(notification => {
+                    notification.classList.remove('unread');
+                });
+                notificationBadge.style.display = 'none';
+            });
+
+            // Close dropdowns when clicking outside
+            document.addEventListener('click', function(event) {
+                if (!notificationPanel.contains(event.target) && !notificationButton.contains(event.target)) {
+                    notificationPanel.classList.remove('active');
+                }
+                
+                if (!userDropdown.contains(event.target) && !userMenu.contains(event.target)) {
+                    userDropdown.classList.remove('active');
+                }
+            });
+
+            // Assignment Actions
+            document.querySelectorAll('.btn-primary').forEach(button => {
+                if (button.textContent.includes('Submit')) {
+                    button.addEventListener('click', function() {
+                        alert('Assignment submission dialog would open here.');
+                    });
+                }
+                
+                if (button.textContent.includes('Start Quiz')) {
+                    button.addEventListener('click', function() {
+                        if (confirm('Are you ready to start the quiz? You will have 30 minutes to complete it.')) {
+                            alert('Redirecting to quiz...');
+                        }
+                    });
+                }
+            });
+
+            // Resource Item Click
+            document.querySelectorAll('.resource-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    const resourceName = this.querySelector('.resource-name').textContent;
+                    alert(`Opening ${resourceName}...`);
+                });
+            });
+
+            // Calendar Event Click
+            document.querySelectorAll('.calendar-event').forEach(event => {
+                event.addEventListener('click', function() {
+                    const eventTitle = this.querySelector('.event-title').textContent;
+                    const eventTime = this.querySelector('.event-time').textContent;
+                    alert(`${eventTitle}\n${eventTime}\n\nClick "View Details" for more information.`);
+                });
+            });
+
+            // Grade Row Click
+            document.querySelectorAll('.grades-table tbody tr').forEach(row => {
+                row.addEventListener('click', function() {
+                    const course = this.cells[0].textContent;
+                    const assignment = this.cells[1].textContent;
+                    const score = this.cells[2].textContent;
+                    const grade = this.cells[3].textContent;
+                    
+                    alert(`${course}\n${assignment}\nScore: ${score}\nGrade: ${grade}\n\nClick "All Grades" for detailed breakdown.`);
+                });
+            });
+
+            // Announcement Click
+            document.querySelectorAll('.announcement-item').forEach(announcement => {
+                announcement.addEventListener('click', function() {
+                    const title = this.querySelector('.announcement-title').textContent;
+                    const content = this.querySelector('.announcement-content').textContent;
+                    const date = this.querySelector('.announcement-date').textContent;
+                    
+                    alert(`${title}\n${date}\n\n${content}\n\nClick "View All" to see all announcements.`);
+                });
+            });
+
+            // Initialize Calendar
+            function initializeCalendar() {
+                const today = new Date();
+                const calendarHeader = document.querySelector('.calendar-header');
+                
+                // In a real app, you would use a calendar library
+                // For now, we'll just highlight today
+                document.querySelectorAll('.calendar-table td').forEach(cell => {
+                    if (cell.classList.contains('today')) {
+                        cell.innerHTML = `<span>${today.getDate()}</span>`;
+                    }
+                });
+            }
+
+            // Update notification badge count
+            function updateNotificationBadge() {
+                const unreadCount = document.querySelectorAll('.notification-item.unread').length;
+                notificationBadge.textContent = unreadCount;
+                if (unreadCount === 0) {
+                    notificationBadge.style.display = 'none';
+                } else {
+                    notificationBadge.style.display = 'flex';
+                }
+            }
+
+            // Simulate live updates (in real app, this would be from WebSocket)
+            function simulateLiveUpdates() {
+                // Simulate new notification every 30 seconds (for demo)
+                setInterval(() => {
+                    const notifications = [
+                        { title: 'New Course Material', content: 'New lecture notes uploaded for Anatomy', time: 'Just now' },
+                        { title: 'Assignment Graded', content: 'Your recent submission has been graded', time: '5 minutes ago' },
+                        { title: 'Class Cancelled', content: 'Pharmacology class cancelled tomorrow', time: '10 minutes ago' }
+                    ];
+                    
+                    const randomNotif = notifications[Math.floor(Math.random() * notifications.length)];
+                    addNewNotification(randomNotif);
+                }, 30000); // 30 seconds
+            }
+
+            function addNewNotification(notification) {
+                const notificationList = document.querySelector('.notification-list');
+                const newNotif = document.createElement('div');
+                newNotif.className = 'notification-item unread';
+                newNotif.innerHTML = `
+                    <div class="notification-title">${notification.title}</div>
+                    <div class="notification-content">${notification.content}</div>
+                    <div class="notification-time">${notification.time}</div>
+                `;
+                notificationList.insertBefore(newNotif, notificationList.firstChild);
+                updateNotificationBadge();
+            }
+
+            // Keyboard shortcuts
+            document.addEventListener('keydown', function(e) {
+                // Ctrl/Cmd + / for search
+                if ((e.ctrlKey || e.metaKey) && e.key === '/') {
+                    e.preventDefault();
+                    searchButton.click();
+                }
+                
+                // Esc to close panels
+                if (e.key === 'Escape') {
+                    notificationPanel.classList.remove('active');
+                    userDropdown.classList.remove('active');
+                }
+            });
+
+            // Initialize everything
+            initializeStudentData();
+            initializeCalendar();
+            updateNotificationBadge();
+            simulateLiveUpdates();
+
+            // Window resize handler
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 992) {
+                    sidebar.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
